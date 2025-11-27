@@ -2,11 +2,16 @@ package br.com.rcl.screenmatch;
 
 import br.com.rcl.screenmatch.model.DadosEpisodio;
 import br.com.rcl.screenmatch.model.DadosSerie;
+import br.com.rcl.screenmatch.model.DadosTemporada;
+import br.com.rcl.screenmatch.principal.Principal;
 import br.com.rcl.screenmatch.service.ConsumoAPI;
 import br.com.rcl.screenmatch.service.ConverteDados;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class ScreenmatchApplication implements CommandLineRunner {
@@ -17,18 +22,8 @@ public class ScreenmatchApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		ConsumoAPI consumoAPI = new ConsumoAPI();
-		var json = consumoAPI.obterDados("https://www.omdbapi.com/?t=gilmore+girls&apikey=2bf3b801");
-		System.out.println(json);
-		ConverteDados convesor = new ConverteDados();
-		DadosSerie dados = convesor.obterDados(json, DadosSerie.class);
-		System.out.println(dados);
+		Principal principal = new Principal();
+		principal.exibMenu();
 
-		json = consumoAPI.obterDados("https://www.omdbapi.com/?t=gilmore+girls&season=1&episode=2&apikey=2bf3b801");
-		DadosEpisodio dadosEpisodio = convesor.obterDados(json, DadosEpisodio.class);
-		System.out.println(dadosEpisodio);
-
-//		json = consumoAPI.obterDados("https://coffee.alexflipnote.dev/random.json");
-//		System.out.println(json);
 	}
 }
