@@ -1,6 +1,5 @@
 package br.com.rcl.screenmatch.principal;
 
-import br.com.rcl.screenmatch.model.DadosEpisodio;
 import br.com.rcl.screenmatch.model.DadosSerie;
 import br.com.rcl.screenmatch.model.DadosTemporada;
 import br.com.rcl.screenmatch.service.ConsumoAPI;
